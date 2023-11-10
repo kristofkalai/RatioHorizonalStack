@@ -27,13 +27,13 @@ public struct RatioHorizonalStack<Leading: View, Trailing: View> {
         }
     }
     private let ratio: Ratio
-    private let spacing: CGFloat?
+    private let spacing: CGFloat
     private let leading: Leading
     private let trailing: Trailing
 
     public init(
         ratio: Ratio = .equal,
-        spacing: CGFloat? = .zero,
+        spacing: CGFloat = .zero,
         @ViewBuilder leading: @escaping () -> Leading,
         @ViewBuilder trailing: @escaping () -> Trailing
     ) {
@@ -49,7 +49,7 @@ extension RatioHorizonalStack: View {
         ContentWrappingGeometryReader { proxy in
             HStack(spacing: spacing) {
                 leading
-                    .frame(width: proxy.size.width * ratio.leftRatio)
+                    .frame(width: (proxy.size.width - spacing) * ratio.leftRatio)
                 trailing
             }
         }

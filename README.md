@@ -6,7 +6,7 @@ Split a HStack into separate distinct parts! 🚥
 Add the following to `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/stateman92/RatioHorizonalStack", exact: .init(0, 0, 1))
+.package(url: "https://github.com/stateman92/RatioHorizonalStack", exact: .init(0, 0, 2))
 ```
 
 [Or add the package in Xcode.](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app)
