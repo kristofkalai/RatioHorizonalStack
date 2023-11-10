@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "advancedgeometryreader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stateman92/AdvancedGeometryReader.git",
+      "state" : {
+        "revision" : "4233e14bc8c6abb0ebf93d74da047e1b535da407",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "sizepreferencekey",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stateman92/SizePreferenceKey.git",
+      "state" : {
+        "revision" : "fe4d8b2caae6dda8742f7c423a4737fce45579bb",
+        "version" : "0.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}
