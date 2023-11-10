@@ -26,19 +26,33 @@ public struct RatioHorizonalStack<Leading: View, Trailing: View> {
             .left(0.5)
         }
     }
+
+    public enum SpacingType {
+        case leading
+        case middle
+        case trailing
+
+        public static var `default`: Self {
+            .middle
+        }
+    }
+
     private let ratio: Ratio
     private let spacing: CGFloat
+    private let spacingType: SpacingType
     private let leading: Leading
     private let trailing: Trailing
 
     public init(
         ratio: Ratio = .equal,
         spacing: CGFloat = .zero,
+        occupySpacingFrom spacingType: SpacingType = .default,
         @ViewBuilder leading: @escaping () -> Leading,
         @ViewBuilder trailing: @escaping () -> Trailing
     ) {
         self.ratio = ratio
         self.spacing = spacing
+        self.spacingType = spacingType
         self.leading = leading()
         self.trailing = trailing()
     }
@@ -48,8 +62,16 @@ extension RatioHorizonalStack: View {
     public var body: some View {
         ContentWrappingGeometryReader { proxy in
             HStack(spacing: spacing) {
+                let halfWidth = proxy.size.width * ratio.leftRatio
+                let spacingOccupiedSpaceInLeadingPart: CGFloat = {
+                    switch spacingType {
+                    case .leading: spacing
+                    case .middle: spacing / 2
+                    case .trailing: .zero
+                    }
+                }()
                 leading
-                    .frame(width: (proxy.size.width - spacing) * ratio.leftRatio)
+                    .frame(width: halfWidth - spacingOccupiedSpaceInLeadingPart)
                 trailing
             }
         }
